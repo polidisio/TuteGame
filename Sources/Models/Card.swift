@@ -16,7 +16,7 @@ enum Suit: String, CaseIterable, Codable {
     }
 }
 
-enum Rank: Int, CaseIterable, Codable, Comparable {
+enum Rank: Int, CaseIterable, Codable {
     case uno = 1
     case dos = 2
     case tres = 3

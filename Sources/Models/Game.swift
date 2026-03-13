@@ -1,6 +1,6 @@
 import Foundation
 
-struct Game: Codable {
+struct Game {
     var players: [Player]
     var deck: Deck
     var currentPlayerIndex: Int

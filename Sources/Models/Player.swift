@@ -5,7 +5,7 @@ enum PlayerType: String, Codable {
     case cpu
 }
 
-struct Player: Identifiable, Codable {
+struct Player: Identifiable {
     let id: UUID
     var name: String
     var type: PlayerType
