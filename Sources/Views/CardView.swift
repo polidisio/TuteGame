@@ -4,12 +4,10 @@ struct CardView: View {
     let card: Card
     let isFaceUp: Bool
     
-    // Animation states
     @State private var isAnimating = false
     @State private var offset: CGSize = .zero
     @State private var scale: CGFloat = 1.0
     
-    // Animation configuration
     var animationType: CardAnimation = .none
     
     enum CardAnimation {
@@ -20,7 +18,6 @@ struct CardView: View {
         case flip
     }
     
-    // Map card to image number
     private var imageNumber: Int {
         let suitOffset: Int
         switch card.suit {
@@ -47,43 +44,21 @@ struct CardView: View {
         return suitOffset + rankValue
     }
     
+    private var suitColor: Color {
+        switch card.suit {
+        case .oros, .copas:
+            return .red
+        case .espadas, .bastos:
+            return .black
+        }
+    }
+    
     var body: some View {
         ZStack {
             if isFaceUp {
-                Image("\(imageNumber)")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                fallbackCardView
             } else {
-                // Card back with design
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(red: 0.1, green: 0.1, blue: 0.4),
-                                    Color(red: 0.2, green: 0.2, blue: 0.5)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                    
-                    // Decorative pattern
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.white.opacity(0.3), lineWidth: 2)
-                        .padding(4)
-                    
-                    // Center design
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                        .padding(15)
-                        .overlay(
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.white.opacity(0.15))
-                                .font(.system(size: 30))
-                        )
-                }
+                cardBackView
             }
         }
         .frame(width: 70, height: 100)
@@ -98,13 +73,85 @@ struct CardView: View {
             }
         }
     }
+    
+    private var fallbackCardView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(suitColor, lineWidth: 2)
+                )
+            
+            VStack(spacing: 2) {
+                Text(card.rank.symbol)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(suitColor)
+                
+                Text(card.suit.symbol)
+                    .font(.system(size: 20))
+            }
+            
+            VStack {
+                HStack {
+                    Text(card.rank.symbol)
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundColor(suitColor)
+                    Spacer()
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text(card.rank.symbol)
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundColor(suitColor)
+                        .rotationEffect(.degrees(180))
+                }
+            }
+            .padding(4)
+        }
+    }
+    
+    private var cardBackView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 0.1, green: 0.1, blue: 0.4),
+                            Color(red: 0.2, green: 0.2, blue: 0.5)
+                        ]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+            
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(Color.white.opacity(0.3), lineWidth: 2)
+                .padding(4)
+            
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                .padding(15)
+                .overlay(
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.white.opacity(0.15))
+                        .font(.system(size: 30))
+                )
+        }
+    }
 }
 
-// MARK: - Preview
 #Preview {
     VStack(spacing: 20) {
-        CardView(card: Card(suit: .oros, rank: .uno), isFaceUp: true)
-        CardView(card: Card(suit: .espadas, rank: .rey), isFaceUp: true)
-        CardView(card: Card(suit: .bastos, rank: .sota), isFaceUp: false)
+        HStack(spacing: 10) {
+            CardView(card: Card(suit: .oros, rank: .uno), isFaceUp: true)
+            CardView(card: Card(suit: .copas, rank: .tres), isFaceUp: true)
+            CardView(card: Card(suit: .espadas, rank: .rey), isFaceUp: true)
+            CardView(card: Card(suit: .bastos, rank: .sota), isFaceUp: true)
+        }
+        CardView(card: Card(suit: .oros, rank: .siete), isFaceUp: false)
     }
+    .padding()
+    .background(Color.green.opacity(0.3))
 }

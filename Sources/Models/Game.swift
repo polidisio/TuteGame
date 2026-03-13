@@ -143,8 +143,10 @@ struct Game {
         // Add to winner's team
         if actualWinner % 2 == 0 { // Team 1 (players 0 and 2)
             players[actualWinner].score += points
+            team1Score += points
         } else { // Team 2 (players 1 and 3)
             players[actualWinner].score += points
+            team2Score += points
         }
         
         message = "¡Baza para \(players[actualWinner].name)! +\(points) puntos"

@@ -5,23 +5,16 @@ struct GameView: View {
     @State private var selectedCard: Card?
     @State private var showingAlert = false
     @State private var alertMessage = ""
+    @State private var cardAnimation = false
     
     var body: some View {
         VStack(spacing: 20) {
-            
-            // Header
             headerView
-            
-            // Game table
             gameTable
-            
-            // Your hand
             playerHand
-            
             Spacer()
         }
         .onAppear {
-            // Start CPU turn if needed
             checkCPUTurn()
         }
         .alert("Mensaje", isPresented: $showingAlert) {
@@ -31,7 +24,6 @@ struct GameView: View {
         }
     }
     
-    // MARK: - Header
     var headerView: some View {
         VStack(spacing: 5) {
             HStack {
@@ -40,87 +32,88 @@ struct GameView: View {
                 
                 Spacer()
                 
-                if let trump = game.trumpSuit {
-                    Text("Triunfo: \(trump.symbol)")
-                        .font(.subheadline)
-                        .foregroundColor(.red)
-                }
+                trumpIndicator
                 
                 Spacer()
                 
-                // Scores
-                HStack(spacing: 20) {
-                    VStack {
-                        Text("Equipo 1")
-                            .font(.caption2)
-                        Text("\(game.team1Score)")
-                            .font(.title3)
-                            .foregroundColor(.blue)
-                    }
-                    VStack {
-                        Text("Equipo 2")
-                            .font(.caption2)
-                        Text("\(game.team2Score)")
-                            .font(.title3)
-                            .foregroundColor(.red)
-                    }
-                }
+                scoresView
             }
             .padding()
             .background(Color(.systemGray6))
             
-            // Message
             if let msg = game.message {
                 Text(msg)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.3), value: game.message)
+    }
+    
+    var trumpIndicator: some View {
+        HStack(spacing: 4) {
+            if let trump = game.trumpSuit {
+                Text("Triunfo:")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(trump.symbol)
+                    .font(.title2)
+                Text(trump.rawValue.capitalized)
+                    .font(.caption)
+                    .foregroundColor(.red)
             }
         }
     }
     
-    // MARK: - Game Table
+    var scoresView: some View {
+        HStack(spacing: 20) {
+            teamScoreView(team: 1, score: game.team1Score, isWinning: game.team1Score > game.team2Score)
+            teamScoreView(team: 2, score: game.team2Score, isWinning: game.team2Score > game.team1Score)
+        }
+    }
+    
+    func teamScoreView(team: Int, score: Int, isWinning: Bool) -> some View {
+        VStack(spacing: 2) {
+            Text("E\(team)")
+                .font(.caption2)
+            Text("\(score)")
+                .font(.title3)
+                .fontWeight(isWinning ? .bold : .regular)
+                .foregroundColor(team == 1 ? .blue : .red)
+        }
+    }
+    
     var gameTable: some View {
         ZStack {
-            // Green felt background
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.green.opacity(0.3))
-                .frame(height: 180)
+                .fill(
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            Color.green.opacity(0.4),
+                            Color.green.opacity(0.1)
+                        ]),
+                        center: .center,
+                        startRadius: 50,
+                        endRadius: 150
+                    )
+                )
+                .frame(height: 200)
             
             VStack {
-                // CPU 2 and 3 (top)
-                HStack(spacing: 40) {
-                    // CPU 2 (left)
+                HStack(spacing: 60) {
                     playerCardStack(player: game.players[2], position: .top)
-                    
                     Spacer()
-                    
-                    // CPU 3 (right)
                     playerCardStack(player: game.players[3], position: .top)
                 }
                 .padding(.horizontal, 40)
                 
                 Spacer()
                 
-                // Trick area (center)
-                if !game.currentTrick.isEmpty {
-                    HStack(spacing: 15) {
-                        ForEach(game.currentTrick, id: \.playerIndex) { trickCard in
-                            VStack {
-                                CardView(card: trickCard.card, isFaceUp: true)
-                                    .frame(width: 50, height: 70)
-                                Text(game.players[trickCard.playerIndex].name)
-                                    .font(.caption2)
-                            }
-                        }
-                    }
-                } else {
-                    Text("Toca una carta para jugar")
-                        .foregroundColor(.secondary)
-                }
+                trickArea
                 
                 Spacer()
                 
-                // CPU 1 (bottom left)
                 HStack {
                     playerCardStack(player: game.players[1], position: .bottom)
                     Spacer()
@@ -132,29 +125,86 @@ struct GameView: View {
         .padding()
     }
     
+    var trickArea: some View {
+        ZStack {
+            if !game.currentTrick.isEmpty {
+                HStack(spacing: 20) {
+                    ForEach(game.currentTrick, id: \.playerIndex) { trickCard in
+                        VStack(spacing: 4) {
+                            CardView(card: trickCard.card, isFaceUp: true)
+                                .frame(width: 55, height: 80)
+                                .scaleEffect(isWinningCard(trickCard.card) ? 1.1 : 1.0)
+                                .shadow(color: isWinningCard(trickCard.card) ? .yellow : .clear, radius: 5)
+                            
+                            Text(game.players[trickCard.playerIndex].name)
+                                .font(.caption2)
+                                .foregroundColor(isWinningCard(trickCard.card) ? .yellow : .secondary)
+                        }
+                        .animation(.spring(response: 0.3), value: game.currentTrick.count)
+                    }
+                }
+            } else {
+                VStack(spacing: 4) {
+                    Image(systemName: "hand.point.up")
+                        .font(.title2)
+                        .foregroundColor(.secondary.opacity(0.5))
+                    Text(game.currentPlayerIndex == 0 ? "Tu turno" : "\(game.currentPlayer.name) juega")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+    
+    func isWinningCard(_ card: Card) -> Bool {
+        guard game.currentTrick.count == 4, let lead = game.currentTrick.first?.card.suit else {
+            return false
+        }
+        
+        let winner = GameLogic.winner(of: game.currentTrick.map { $0.card }, leadSuit: lead, trumpSuit: game.trumpSuit)
+        return game.currentTrick[winner].card.id == card.id
+    }
+    
     func playerCardStack(player: Player, position: PlayerPosition) -> some View {
-        VStack(spacing: 2) {
+        VStack(spacing: 4) {
+            if game.currentPlayerIndex == game.players.firstIndex(where: { $0.id == player.id }) {
+                Image(systemName: "arrow.down")
+                    .font(.caption)
+                    .foregroundColor(.yellow)
+            }
+            
             Text(player.name)
                 .font(.caption2)
-                .foregroundColor(.secondary)
+                .foregroundColor(game.currentPlayerIndex == game.players.firstIndex(where: { $0.id == player.id }) ? .yellow : .secondary)
             
             ZStack {
-                // Card backs
                 ForEach(0..<min(player.hand.count, 3), id: \.self) { i in
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.blue.opacity(0.8))
-                        .frame(width: 30, height: 40)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.blue.opacity(0.8), .blue.opacity(0.5)]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 30, height: 42)
                         .offset(y: CGFloat(i * 2))
                 }
                 
-                // Count badge
                 if player.hand.count > 0 {
                     Text("\(player.hand.count)")
                         .font(.caption2)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .padding(4)
+                        .frame(width: 20, height: 20)
                         .background(Circle().fill(Color.blue))
                 }
+            }
+            
+            if !player.hand.isEmpty {
+                Text("+\(player.score)")
+                    .font(.caption2)
+                    .foregroundColor(.green)
             }
         }
     }
@@ -163,7 +213,6 @@ struct GameView: View {
         case top, bottom
     }
     
-    // MARK: - Player Hand
     var playerHand: some View {
         VStack(spacing: 10) {
             HStack {
@@ -173,23 +222,27 @@ struct GameView: View {
                 
                 Spacer()
                 
-                if game.currentPlayerIndex == 0 {
-                    Text("Tu turno")
-                        .font(.caption)
-                        .foregroundColor(.green)
+                HStack(spacing: 8) {
+                    ForEach(0..<4, id: \.self) { i in
+                        Circle()
+                            .fill(i == game.currentPlayerIndex ? Color.green : Color.gray.opacity(0.3))
+                            .frame(width: 8, height: 8)
+                    }
                 }
             }
             .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: -40) {
+                HStack(spacing: -35) {
                     ForEach(game.players[0].hand) { card in
                         CardView(card: card, isFaceUp: true)
-                            .frame(width: 70, height: 100)
+                            .frame(width: 65, height: 95)
                             .onTapGesture {
                                 playCard(card)
                             }
-                            .opacity(isValidMove(card) ? 1 : 0.5)
+                            .opacity(isValidMove(card) ? 1 : 0.4)
+                            .scaleEffect(isValidMove(card) ? 1.0 : 0.9)
+                            .animation(.spring(response: 0.3), value: selectedCard)
                     }
                 }
                 .padding(.horizontal)
@@ -199,43 +252,41 @@ struct GameView: View {
         }
     }
     
-    // MARK: - Game Logic
-    
     func isValidMove(_ card: Card) -> Bool {
         return game.isValidMove(card: card, by: 0)
     }
     
     func playCard(_ card: Card) {
-        // Check if it's player's turn
         guard game.currentPlayerIndex == 0 else {
             alertMessage = "Espera tu turno"
             showingAlert = true
             return
         }
         
-        // Check if valid move
         guard isValidMove(card) else {
             alertMessage = "Debes seguir el palo"
             showingAlert = true
             return
         }
         
-        // Play the card
+        selectedCard = card
+        withAnimation(.spring(response: 0.3)) {
+            cardAnimation = true
+        }
+        
         _ = game.playCard(card: card, by: 0)
         
-        // Check for message
         if let msg = game.message {
             alertMessage = msg
             showingAlert = true
         }
         
-        // CPU plays after human
         checkCPUTurn()
     }
     
     func checkCPUTurn() {
-        // Delay for better UX
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        Task {
+            try? await Task.sleep(nanoseconds: 500_000_000)
             while game.currentPlayer.type == .cpu && game.gamePhase == .playing {
                 game.cpuPlay()
                 
@@ -244,8 +295,7 @@ struct GameView: View {
                     showingAlert = true
                 }
                 
-                // Small delay between CPU moves
-                Thread.sleep(forTimeInterval: 0.8)
+                try? await Task.sleep(nanoseconds: 800_000_000)
             }
         }
     }

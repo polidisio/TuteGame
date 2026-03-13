@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var game = Game()
     @State private var showStatistics = false
     @State private var showSettings = false
+    @State private var showRules = false
     @State private var stats = GameStatistics()
     
     var body: some View {
@@ -67,7 +68,7 @@ struct ContentView: View {
                     
                     Button(action: {
                         SettingsManager.shared.triggerHaptic(.light)
-                        // Show rules
+                        showRules = true
                     }) {
                         Label("Reglas del Juego", systemImage: "questionmark.circle")
                             .font(.title3)
@@ -111,6 +112,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
+            }
+            .sheet(isPresented: $showRules) {
+                RulesView()
             }
             .onAppear {
                 loadStatistics()

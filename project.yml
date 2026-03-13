@@ -21,8 +21,8 @@ targets:
     sources:
       - path: Sources
         type: group
-      - path: Resources
-        type: folder
+      - path: Resources/Assets.xcassets
+        type: file
         buildPhase: resources
     settings:
       base:
