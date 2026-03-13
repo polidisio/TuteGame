@@ -4,83 +4,55 @@ struct CardView: View {
     let card: Card
     let isFaceUp: Bool
     
+    // Map card to image number
+    // 1-10: Oros (1=As, 2-7=numbers, 8=Sota, 9=Caballo, 10=Rey)
+    // 11-20: Copas
+    // 21-30: Espadas
+    // 31-40: Bastos
+    private var imageNumber: Int {
+        let suitOffset: Int
+        switch card.suit {
+        case .oros: suitOffset = 0
+        case .copas: suitOffset = 10
+        case .espadas: suitOffset = 20
+        case .bastos: suitOffset = 30
+        }
+        
+        let rankValue: Int
+        switch card.rank {
+        case .uno: rankValue = 1
+        case .dos: rankValue = 2
+        case .tres: rankValue = 3
+        case .cuatro: rankValue = 4
+        case .cinco: rankValue = 5
+        case .seis: rankValue = 6
+        case .siete: rankValue = 7
+        case .sota: rankValue = 8
+        case .caballo: rankValue = 9
+        case .rey: rankValue = 10
+        }
+        
+        return suitOffset + rankValue
+    }
+    
     var body: some View {
         ZStack {
             if isFaceUp {
-                // Card back (design)
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(cardColor)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white, lineWidth: 2)
-                    )
-                
-                // Card content
-                VStack {
-                    HStack {
-                        Text(card.rank.symbol)
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(textColor)
-                        Spacer()
-                    }
-                    Spacer()
-                    Text(card.suit.symbol)
-                        .font(.system(size: 30))
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text(card.rank.symbol)
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(textColor)
-                            .rotationEffect(.degrees(180))
-                    }
-                }
-                .padding(8)
+                // Use the actual card image
+                Image("\(imageNumber)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             } else {
-                // Card back
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(colors: [.blue, .blue.opacity(0.8)]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white, lineWidth: 2)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                            .padding(2)
-                    )
+                // Card back image
+                Image("back")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }
         .frame(width: 70, height: 100)
         .shadow(radius: 2)
-    }
-    
-    var cardColor: Color {
-        switch card.suit {
-        case .oros:
-            return .yellow.opacity(0.3)
-        case .copas:
-            return .red.opacity(0.3)
-        case .espadas:
-            return .gray.opacity(0.3)
-        case .bastos:
-            return .green.opacity(0.3)
-        }
-    }
-    
-    var textColor: Color {
-        switch card.suit {
-        case .oros, .copas:
-            return .red
-        case .espadas, .bastos:
-            return .black
-        }
     }
 }
 
