@@ -190,11 +190,11 @@ struct TuteAI {
         
         // If leader is winning with high card, try to beat
         let canBeatLeader = validMoves.contains { card in
-            if card.suit == trumpSuit && trickHighCard.card.suit != trumpSuit {
+            if card.suit == trumpSuit && trickHighCard.suit != trumpSuit {
                 return true
             }
-            if card.suit == leadSuit && trickHighCard.card.suit == leadSuit {
-                return card.rank.rawValue > trickHighCard.card.rank.rawValue
+            if card.suit == leadSuit && trickHighCard.suit == leadSuit {
+                return card.rank.rawValue > trickHighCard.rank.rawValue
             }
             return false
         }
@@ -202,11 +202,11 @@ struct TuteAI {
         if canBeatLeader {
             // Find lowest card that can win
             let winners = validMoves.filter { card in
-                if card.suit == trumpSuit && trickHighCard.card.suit != trumpSuit {
+                if card.suit == trumpSuit && trickHighCard.suit != trumpSuit {
                     return true
                 }
-                if card.suit == leadSuit && trickHighCard.card.suit == leadSuit {
-                    return card.rank.rawValue > trickHighCard.card.rank.rawValue
+                if card.suit == leadSuit && trickHighCard.suit == leadSuit {
+                    return card.rank.rawValue > trickHighCard.rank.rawValue
                 }
                 return false
             }
