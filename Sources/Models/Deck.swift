@@ -22,7 +22,9 @@ struct Deck {
     
     mutating func deal(count: Int) -> [Card] {
         guard cards.count >= count else { return [] }
-        return Array(cards.removeFirst(count))
+        let dealt = Array(cards.prefix(count))
+        cards.removeFirst(count)
+        return dealt
     }
     
     mutating func draw() -> Card? {
