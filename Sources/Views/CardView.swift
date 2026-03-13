@@ -6,7 +6,6 @@ struct CardView: View {
     
     @State private var isAnimating = false
     @State private var scale: CGFloat = 1.0
-    @State private var imageLoaded = false
     
     var animationType: CardAnimation = .none
     
@@ -18,7 +17,7 @@ struct CardView: View {
         case flip
     }
     
-    private var imageNumber: String {
+    private var imageName: String {
         let suitOffset: Int
         switch card.suit {
         case .oros: suitOffset = 0
@@ -77,60 +76,51 @@ struct CardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color.white)
-            
-            Image(imageNumber)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(2)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                        .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
-                .onAppear {
-                    imageLoaded = true
+            
+            Image(imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .padding(4)
+            
+            VStack {
+                HStack {
+                    Text(card.rank.symbol)
+                        .font(.system(size: 8, weight: .bold))
+                        .foregroundColor(suitColor)
+                    Spacer()
                 }
-            
-            if !imageLoaded {
-                fallbackCardContent
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text(card.rank.symbol)
+                        .font(.system(size: 8, weight: .bold))
+                        .foregroundColor(suitColor)
+                        .rotationEffect(.degrees(180))
+                }
             }
-        }
-    }
-    
-    private var fallbackCardContent: some View {
-        VStack(spacing: 2) {
-            Text(card.rank.symbol)
-                .font(.system(size: 24, weight: .bold))
-                .foregroundColor(suitColor)
-            
-            Text(card.suit.symbol)
-                .font(.system(size: 20))
+            .padding(4)
         }
     }
     
     private var cardBackView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.1, green: 0.1, blue: 0.4),
-                            Color(red: 0.2, green: 0.2, blue: 0.5)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+                .fill(Color.blue.opacity(0.9))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
-            
-            RoundedRectangle(cornerRadius: 6)
-                .stroke(Color.white.opacity(0.3), lineWidth: 2)
-                .padding(4)
             
             Image("back")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
-                .padding(10)
+                .padding(8)
         }
     }
 }
