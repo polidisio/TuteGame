@@ -196,7 +196,6 @@ struct Game {
         
         // Check if has lead suit
         let hasLead = hand.contains { $0.suit == lead }
-        let hasTrump = trumpSuit != nil && hand.contains { $0.suit == trumpSuit }
         
         // Must follow lead suit if possible
         if hasLead {

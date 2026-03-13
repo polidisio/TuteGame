@@ -1,210 +1,46 @@
 {
   "images" : [
-    {
-      "filename" : "1.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "10.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "11.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "12.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "13.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "14.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "15.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "16.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "17.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "18.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "19.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "2.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "20.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "21.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "22.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "23.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "24.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "25.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "26.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "27.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "28.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "29.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "3.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "30.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "31.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "32.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "33.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "34.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "35.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "36.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "37.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "38.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "39.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "4.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "40.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "5.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "6.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "7.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "8.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "9.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "back.PNG",
-      "idiom" : "universal",
-      "scale" : "1x"
-    }
+    {"filename" : "1.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "2.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "3.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "4.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "5.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "6.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "7.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "8.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "9.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "10.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "11.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "12.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "13.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "14.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "15.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "16.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "17.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "18.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "19.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "20.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "21.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "22.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "23.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "24.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "25.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "26.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "27.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "28.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "29.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "30.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "31.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "32.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "33.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "34.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "35.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "36.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "37.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "38.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "39.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "40.PNG", "idiom" : "universal", "scale" : "1x"},
+    {"filename" : "back.PNG", "idiom" : "universal", "scale" : "1x"}
   ],
   "info" : {
     "author" : "xcode",
