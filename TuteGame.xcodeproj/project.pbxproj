@@ -10,8 +10,10 @@
 		082AFA6741897204D72BD14E /* TuteAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B8BAA30A23C976D3C0C89 /* TuteAI.swift */; };
 		274F1CBD7C0700BDFF860D50 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02540395336107E05C9BFA1 /* Player.swift */; };
 		2E099C4AFB191859039D5055 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51F5E4907AC7E3322AEC4F /* CardView.swift */; };
+		5780908E47D13C76C3081FB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04A8920D47E62185C9F0B0 /* SettingsView.swift */; };
 		59B844E28A4E347821BC480F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA342153FC6060E3BD7AFE6 /* GameView.swift */; };
 		5E6846241E03D7502F3C5DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB16733AC534E7487F3099EF /* Assets.xcassets */; };
+		8349457C064C38A421DF70E9 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9026C810B1CFDD4DA563C8B /* SettingsManager.swift */; };
 		9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B12190FD4357876A4F0925 /* StatisticsView.swift */; };
 		9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CB2021A9B927A8BDF60B /* Statistics.swift */; };
 		AF4B68B86F4F90B0C7F5938B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8141A1011B3C239C1DA7718 /* Card.swift */; };
@@ -36,8 +38,10 @@
 		AB16733AC534E7487F3099EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02540395336107E05C9BFA1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B227CB2021A9B927A8BDF60B /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		B9026C810B1CFDD4DA563C8B /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BC5969DB379781DE06E3EF6E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		BF04A8920D47E62185C9F0B0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E8141A1011B3C239C1DA7718 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FA1B8BAA30A23C976D3C0C89 /* TuteAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuteAI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				44A4F4B360372C65983C7987 /* GameLogic.swift */,
+				B9026C810B1CFDD4DA563C8B /* SettingsManager.swift */,
 				BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */,
 			);
 			path = Utilities;
@@ -106,6 +111,7 @@
 				6C51F5E4907AC7E3322AEC4F /* CardView.swift */,
 				1A69FE09D2A5CB7981594113 /* ContentView.swift */,
 				8FA342153FC6060E3BD7AFE6 /* GameView.swift */,
+				BF04A8920D47E62185C9F0B0 /* SettingsView.swift */,
 				19B12190FD4357876A4F0925 /* StatisticsView.swift */,
 			);
 			path = Views;
@@ -208,6 +214,8 @@
 				D0B5F6A52B350FF176014153 /* GameLogic.swift in Sources */,
 				59B844E28A4E347821BC480F /* GameView.swift in Sources */,
 				274F1CBD7C0700BDFF860D50 /* Player.swift in Sources */,
+				8349457C064C38A421DF70E9 /* SettingsManager.swift in Sources */,
+				5780908E47D13C76C3081FB2 /* SettingsView.swift in Sources */,
 				B1DE42A7A0CB9CC3EA7BBBC0 /* SoundManager.swift in Sources */,
 				9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */,
 				9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */,
