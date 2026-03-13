@@ -56,7 +56,7 @@ struct CardView: View {
     var body: some View {
         ZStack {
             if isFaceUp {
-                fallbackCardView
+                cardImageView
             } else {
                 cardBackView
             }
@@ -74,70 +74,25 @@ struct CardView: View {
         }
     }
     
-    private var fallbackCardView: some View {
+    private var cardImageView: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.white)
+            Image("Cards/\(imageNumber)")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(suitColor, lineWidth: 2)
+                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
                 )
-            
-            VStack(spacing: 2) {
-                Text(card.rank.symbol)
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(suitColor)
-                
-                Text(card.suit.symbol)
-                    .font(.system(size: 20))
-            }
-            
-            VStack {
-                HStack {
-                    Text(card.rank.symbol)
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundColor(suitColor)
-                    Spacer()
-                }
-                Spacer()
-                HStack {
-                    Spacer()
-                    Text(card.rank.symbol)
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundColor(suitColor)
-                        .rotationEffect(.degrees(180))
-                }
-            }
-            .padding(4)
         }
     }
     
     private var cardBackView: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(colors: [
-                            Color(red: 0.1, green: 0.1, blue: 0.4),
-                            Color(red: 0.2, green: 0.2, blue: 0.5)
-                        ]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-            
-            RoundedRectangle(cornerRadius: 6)
-                .stroke(Color.white.opacity(0.3), lineWidth: 2)
-                .padding(4)
-            
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                .padding(15)
-                .overlay(
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.white.opacity(0.15))
-                        .font(.system(size: 30))
-                )
+            Image("Cards/back")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
         }
     }
 }
