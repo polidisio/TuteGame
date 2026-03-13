@@ -12,7 +12,10 @@
 		2E099C4AFB191859039D5055 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51F5E4907AC7E3322AEC4F /* CardView.swift */; };
 		59B844E28A4E347821BC480F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA342153FC6060E3BD7AFE6 /* GameView.swift */; };
 		5E6846241E03D7502F3C5DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB16733AC534E7487F3099EF /* Assets.xcassets */; };
+		9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B12190FD4357876A4F0925 /* StatisticsView.swift */; };
+		9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CB2021A9B927A8BDF60B /* Statistics.swift */; };
 		AF4B68B86F4F90B0C7F5938B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8141A1011B3C239C1DA7718 /* Card.swift */; };
+		B1DE42A7A0CB9CC3EA7BBBC0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */; };
 		C6E4DC1F6FEA876CC3C06D99 /* TuteGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988F5E278980D1B68B98FA15 /* TuteGameApp.swift */; };
 		CD6B889B762DA513812BF3E3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5969DB379781DE06E3EF6E /* Game.swift */; };
 		D0B5F6A52B350FF176014153 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A4F4B360372C65983C7987 /* GameLogic.swift */; };
@@ -22,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		14F414C0202062C2D88AEFD5 /* TuteGame.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TuteGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19B12190FD4357876A4F0925 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A69FE09D2A5CB7981594113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44A4F4B360372C65983C7987 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		6C51F5E4907AC7E3322AEC4F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -31,6 +35,8 @@
 		988F5E278980D1B68B98FA15 /* TuteGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuteGameApp.swift; sourceTree = "<group>"; };
 		AB16733AC534E7487F3099EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02540395336107E05C9BFA1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B227CB2021A9B927A8BDF60B /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BC5969DB379781DE06E3EF6E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E8141A1011B3C239C1DA7718 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FA1B8BAA30A23C976D3C0C89 /* TuteAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuteAI.swift; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				44A4F4B360372C65983C7987 /* GameLogic.swift */,
+				BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -88,6 +95,7 @@
 				785BBF325806DADB1D66987D /* Deck.swift */,
 				BC5969DB379781DE06E3EF6E /* Game.swift */,
 				B02540395336107E05C9BFA1 /* Player.swift */,
+				B227CB2021A9B927A8BDF60B /* Statistics.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 				6C51F5E4907AC7E3322AEC4F /* CardView.swift */,
 				1A69FE09D2A5CB7981594113 /* ContentView.swift */,
 				8FA342153FC6060E3BD7AFE6 /* GameView.swift */,
+				19B12190FD4357876A4F0925 /* StatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +208,9 @@
 				D0B5F6A52B350FF176014153 /* GameLogic.swift in Sources */,
 				59B844E28A4E347821BC480F /* GameView.swift in Sources */,
 				274F1CBD7C0700BDFF860D50 /* Player.swift in Sources */,
+				B1DE42A7A0CB9CC3EA7BBBC0 /* SoundManager.swift in Sources */,
+				9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */,
+				9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */,
 				082AFA6741897204D72BD14E /* TuteAI.swift in Sources */,
 				C6E4DC1F6FEA876CC3C06D99 /* TuteGameApp.swift in Sources */,
 			);

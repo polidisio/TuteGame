@@ -4,11 +4,23 @@ struct CardView: View {
     let card: Card
     let isFaceUp: Bool
     
+    // Animation states
+    @State private var isAnimating = false
+    @State private var offset: CGSize = .zero
+    @State private var scale: CGFloat = 1.0
+    
+    // Animation configuration
+    var animationType: CardAnimation = .none
+    
+    enum CardAnimation {
+        case none
+        case deal
+        case play
+        case win
+        case flip
+    }
+    
     // Map card to image number
-    // 1-10: Oros (1=As, 2-7=numbers, 8=Sota, 9=Caballo, 10=Rey)
-    // 11-20: Copas
-    // 21-30: Espadas
-    // 31-40: Bastos
     private var imageNumber: Int {
         let suitOffset: Int
         switch card.suit {
@@ -38,24 +50,57 @@ struct CardView: View {
     var body: some View {
         ZStack {
             if isFaceUp {
-                // Use the actual card image
                 Image("\(imageNumber)")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             } else {
-                // Card back image
-                Image("back")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                // Card back with design
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color(red: 0.1, green: 0.1, blue: 0.4),
+                                    Color(red: 0.2, green: 0.2, blue: 0.5)
+                                ]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                    
+                    // Decorative pattern
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.white.opacity(0.3), lineWidth: 2)
+                        .padding(4)
+                    
+                    // Center design
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                        .padding(15)
+                        .overlay(
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.white.opacity(0.15))
+                                .font(.system(size: 30))
+                        )
+                }
             }
         }
         .frame(width: 70, height: 100)
-        .shadow(radius: 2)
+        .shadow(color: .black.opacity(0.3), radius: 4, x: 2, y: 2)
+        .scaleEffect(scale)
+        .offset(offset)
+        .rotationEffect(.degrees(isAnimating ? 0 : -90))
+        .opacity(isAnimating ? 1 : 0)
+        .onAppear {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                isAnimating = true
+            }
+        }
     }
 }
 
+// MARK: - Preview
 #Preview {
     VStack(spacing: 20) {
         CardView(card: Card(suit: .oros, rank: .uno), isFaceUp: true)

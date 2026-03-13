@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var gameStarted = false
     @State private var game = Game()
+    @State private var showStatistics = false
+    @State private var stats = GameStatistics()
     
     var body: some View {
         NavigationStack {
@@ -21,6 +23,7 @@ struct ContentView: View {
                 // Menu buttons
                 VStack(spacing: 15) {
                     Button(action: {
+                        SoundManager.shared.haptic(.light)
                         game.startNewRound()
                         gameStarted = true
                     }) {
@@ -30,6 +33,17 @@ struct ContentView: View {
                             .padding()
                     }
                     .buttonStyle(.borderedProminent)
+                    
+                    Button(action: {
+                        SoundManager.shared.haptic(.light)
+                        showStatistics = true
+                    }) {
+                        Label("Estadísticas", systemImage: "chart.bar.fill")
+                            .font(.title3)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                    .buttonStyle(.bordered)
                     
                     Button(action: {
                         // Settings
@@ -56,7 +70,7 @@ struct ContentView: View {
                 Spacer()
                 
                 // Credits
-                Text("v1.0")
+                Text("v1.0 - TuteGame")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
@@ -64,6 +78,20 @@ struct ContentView: View {
             .navigationDestination(isPresented: $gameStarted) {
                 GameView(game: $game)
             }
+            .sheet(isPresented: $showStatistics) {
+                StatisticsView(stats: stats)
+            }
+            .onAppear {
+                loadStatistics()
+            }
+        }
+    }
+    
+    func loadStatistics() {
+        // Load from UserDefaults or file
+        if let data = UserDefaults.standard.data(forKey: "gameStats"),
+           let savedStats = try? JSONDecoder().decode(GameStatistics.self, from: data) {
+            stats = savedStats
         }
     }
 }
