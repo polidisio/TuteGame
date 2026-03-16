@@ -17,38 +17,21 @@ struct CardView: View {
         case flip
     }
     
-    private var imageName: String {
-        let suitOffset: Int
-        switch card.suit {
-        case .oros: suitOffset = 0
-        case .copas: suitOffset = 10
-        case .espadas: suitOffset = 20
-        case .bastos: suitOffset = 30
-        }
-        
-        let rankValue: Int
-        switch card.rank {
-        case .uno: rankValue = 1
-        case .dos: rankValue = 2
-        case .tres: rankValue = 3
-        case .cuatro: rankValue = 4
-        case .cinco: rankValue = 5
-        case .seis: rankValue = 6
-        case .siete: rankValue = 7
-        case .sota: rankValue = 8
-        case .caballo: rankValue = 9
-        case .rey: rankValue = 10
-        }
-        
-        return "\(suitOffset + rankValue)"
-    }
-    
     private var suitColor: Color {
         switch card.suit {
         case .oros, .copas:
             return .red
         case .espadas, .bastos:
             return .black
+        }
+    }
+    
+    private var suitSymbol: String {
+        switch card.suit {
+        case .oros: return "dollarsign.circle.fill"
+        case .copas: return "heart.fill"
+        case .espadas: return "leaf.fill"
+        case .bastos: return "line.3.horizontal.decrease.circle.fill"
         }
     }
     
@@ -81,46 +64,73 @@ struct CardView: View {
                         .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
             
-            Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .padding(4)
-            
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
-                    Text(card.rank.symbol)
-                        .font(.system(size: 8, weight: .bold))
-                        .foregroundColor(suitColor)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(card.rank.symbol)
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(suitColor)
+                        Image(systemName: suitSymbol)
+                            .font(.system(size: 10))
+                            .foregroundColor(suitColor)
+                    }
                     Spacer()
                 }
+                .padding(.leading, 4)
+                .padding(.top, 4)
+                
                 Spacer()
+                
+                Image(systemName: suitSymbol)
+                    .font(.system(size: 28))
+                    .foregroundColor(suitColor.opacity(0.3))
+                
+                Spacer()
+                
                 HStack {
                     Spacer()
-                    Text(card.rank.symbol)
-                        .font(.system(size: 8, weight: .bold))
-                        .foregroundColor(suitColor)
-                        .rotationEffect(.degrees(180))
+                    VStack(alignment: .trailing, spacing: 0) {
+                        Image(systemName: suitSymbol)
+                            .font(.system(size: 10))
+                            .foregroundColor(suitColor)
+                        Text(card.rank.symbol)
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(suitColor)
+                    }
                 }
+                .padding(.trailing, 4)
+                .padding(.bottom, 4)
             }
-            .padding(4)
         }
     }
     
     private var cardBackView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color.blue.opacity(0.9))
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color.blue.opacity(0.8),
+                            Color.blue.opacity(0.6)
+                        ]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
             
-            Image("back")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-                .padding(8)
+            VStack(spacing: 4) {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 20))
+                    .foregroundColor(.white.opacity(0.3))
+                
+                Text("TUTE")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(.white.opacity(0.5))
+            }
         }
     }
 }
