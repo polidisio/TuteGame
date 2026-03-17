@@ -16,7 +16,6 @@
 		8349457C064C38A421DF70E9 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9026C810B1CFDD4DA563C8B /* SettingsManager.swift */; };
 		9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B12190FD4357876A4F0925 /* StatisticsView.swift */; };
 		9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CB2021A9B927A8BDF60B /* Statistics.swift */; };
-		A6E7B59B0B205F22F73D131B /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 03E0BE06AB70E3AB94E381C7 /* Resources */; };
 		AF4B68B86F4F90B0C7F5938B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8141A1011B3C239C1DA7718 /* Card.swift */; };
 		B1DE42A7A0CB9CC3EA7BBBC0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */; };
 		C6E4DC1F6FEA876CC3C06D99 /* TuteGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988F5E278980D1B68B98FA15 /* TuteGameApp.swift */; };
@@ -27,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03E0BE06AB70E3AB94E381C7 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
 		14F414C0202062C2D88AEFD5 /* TuteGame.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TuteGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B12190FD4357876A4F0925 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A69FE09D2A5CB7981594113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 		BD975B790798B73D885F5121 = {
 			isa = PBXGroup;
 			children = (
-				03E0BE06AB70E3AB94E381C7 /* Resources */,
 				23C0323C51E03AFAB49162F6 /* Sources */,
 				4897C1552FB0A0480ED3DBF5 /* Products */,
 			);
@@ -136,7 +133,6 @@
 			buildConfigurationList = D37E26555C7C500D44903ACE /* Build configuration list for PBXNativeTarget "TuteGame" */;
 			buildPhases = (
 				894ECBF93F4CCBC5E5878402 /* Sources */,
-				162727C0F12AD9745D227273 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -182,17 +178,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		162727C0F12AD9745D227273 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6E7B59B0B205F22F73D131B /* Resources in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		894ECBF93F4CCBC5E5878402 /* Sources */ = {
@@ -281,7 +266,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
@@ -342,7 +326,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
@@ -357,8 +340,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,8 +358,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
