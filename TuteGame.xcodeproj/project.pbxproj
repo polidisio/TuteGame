@@ -30,6 +30,7 @@
 		19B12190FD4357876A4F0925 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A69FE09D2A5CB7981594113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44A4F4B360372C65983C7987 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		604BB146F37D15EC1619C8C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6C51F5E4907AC7E3322AEC4F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		785BBF325806DADB1D66987D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		8FA342153FC6060E3BD7AFE6 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		23C0323C51E03AFAB49162F6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				604BB146F37D15EC1619C8C0 /* Info.plist */,
 				02E1F137D941C23AA37A175A /* AI */,
 				391ABC827974D938AE38A1C4 /* App */,
 				667A8190176D28D415F6F171 /* Models */,
