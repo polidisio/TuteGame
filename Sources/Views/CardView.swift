@@ -81,7 +81,7 @@ struct CardView: View {
                         .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
             
-            Image("CardDeck/\(imageNumber)")
+            Image(imageNumber)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -116,7 +116,7 @@ struct CardView: View {
                         .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
             
-            Image("CardDeck/back")
+            Image("back")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
