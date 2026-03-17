@@ -7,7 +7,7 @@ struct CardView: View {
     @State private var isAnimating = false
     @State private var scale: CGFloat = 1.0
     
-    private var imageNumber: Int {
+    private var imageName: String {
         let suitOffset: Int
         switch card.suit {
         case .oros: suitOffset = 0
@@ -30,7 +30,7 @@ struct CardView: View {
         case .rey: rankValue = 10
         }
         
-        return suitOffset + rankValue
+        return "\(suitOffset + rankValue)"
     }
     
     private var suitColor: Color {
@@ -71,7 +71,7 @@ struct CardView: View {
                         .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
             
-            Image("CardImages/\(imageNumber)")
+            Image(imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -106,7 +106,7 @@ struct CardView: View {
                         .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
             
-            Image("CardImages/back")
+            Image("back")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 4))

@@ -13,10 +13,10 @@
 		2E099C4AFB191859039D5055 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51F5E4907AC7E3322AEC4F /* CardView.swift */; };
 		5780908E47D13C76C3081FB2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04A8920D47E62185C9F0B0 /* SettingsView.swift */; };
 		59B844E28A4E347821BC480F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA342153FC6060E3BD7AFE6 /* GameView.swift */; };
-		749EEFC52DF461D0AB64391C /* CardImages in Resources */ = {isa = PBXBuildFile; fileRef = D81E22DD7DB2BAEE2555C011 /* CardImages */; };
 		8349457C064C38A421DF70E9 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9026C810B1CFDD4DA563C8B /* SettingsManager.swift */; };
 		9294595F099DD394A1CB6EC5 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B12190FD4357876A4F0925 /* StatisticsView.swift */; };
 		9C4263AC6B19257E8C542381 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CB2021A9B927A8BDF60B /* Statistics.swift */; };
+		A6E7B59B0B205F22F73D131B /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 03E0BE06AB70E3AB94E381C7 /* Resources */; };
 		AF4B68B86F4F90B0C7F5938B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8141A1011B3C239C1DA7718 /* Card.swift */; };
 		B1DE42A7A0CB9CC3EA7BBBC0 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDDA0EC7368D20BCB0F72A /* SoundManager.swift */; };
 		C6E4DC1F6FEA876CC3C06D99 /* TuteGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988F5E278980D1B68B98FA15 /* TuteGameApp.swift */; };
@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03E0BE06AB70E3AB94E381C7 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
 		14F414C0202062C2D88AEFD5 /* TuteGame.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TuteGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B12190FD4357876A4F0925 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1A69FE09D2A5CB7981594113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		BC5969DB379781DE06E3EF6E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		BF04A8920D47E62185C9F0B0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C6CD01CF2F3281FD8C915C66 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
-		D81E22DD7DB2BAEE2555C011 /* CardImages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CardImages; path = Resources/CardImages; sourceTree = SOURCE_ROOT; };
 		E8141A1011B3C239C1DA7718 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FA1B8BAA30A23C976D3C0C89 /* TuteAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuteAI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,7 +122,7 @@
 		BD975B790798B73D885F5121 = {
 			isa = PBXGroup;
 			children = (
-				D81E22DD7DB2BAEE2555C011 /* CardImages */,
+				03E0BE06AB70E3AB94E381C7 /* Resources */,
 				23C0323C51E03AFAB49162F6 /* Sources */,
 				4897C1552FB0A0480ED3DBF5 /* Products */,
 			);
@@ -157,12 +157,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-					EC52D8ADB0FD6CCB7460BC00 = {
-						DevelopmentTeam = "";
-						ProvisioningStyle = Manual;
-					};
-				};
 			};
 			buildConfigurationList = 67E2DFCAF535E30FF9DDE6FF /* Build configuration list for PBXProject "TuteGame" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -188,7 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749EEFC52DF461D0AB64391C /* CardImages in Resources */,
+				A6E7B59B0B205F22F73D131B /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,9 +348,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,9 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
