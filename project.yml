@@ -24,6 +24,9 @@ targets:
       - path: Resources/Assets.xcassets
         type: file
         buildPhase: resources
+      - path: Resources/Images
+        type: folder
+        buildPhase: resources
     settings:
       base:
         INFOPLIST_FILE: Resources/Info.plist
