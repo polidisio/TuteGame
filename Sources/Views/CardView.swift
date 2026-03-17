@@ -81,7 +81,7 @@ struct CardView: View {
                         .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
             
-            cardImage(named: imageNumber)
+            Image(imageNumber)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -107,20 +107,6 @@ struct CardView: View {
         }
     }
     
-    private func cardImage(named name: String) -> Image {
-        if let nsImage = loadImage(named: name) {
-            return Image(nsImage: nsImage)
-        }
-        return Image(systemName: "questionmark.square.fill")
-    }
-    
-    private func loadImage(named name: String) -> NSImage? {
-        if let path = Bundle.main.path(forResource: name, ofType: "png", inDirectory: "Images") {
-            return NSImage(contentsOfFile: path)
-        }
-        return nil
-    }
-    
     private var cardBackView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
@@ -130,17 +116,11 @@ struct CardView: View {
                         .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
             
-            if let nsImage = loadImage(named: "back") {
-                Image(nsImage: nsImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                    .padding(8)
-            } else {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 30))
-                    .foregroundColor(.white.opacity(0.3))
-            }
+            Image("back")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .padding(8)
         }
     }
 }
