@@ -81,7 +81,7 @@ struct CardView: View {
                         .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 )
             
-            cardImage(named: imageNumber)
+            Image("CardDeck/\(imageNumber)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
@@ -107,10 +107,6 @@ struct CardView: View {
         }
     }
     
-    private func cardImage(named name: String) -> Image {
-        Image(name)
-    }
-    
     private var cardBackView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
@@ -120,9 +116,9 @@ struct CardView: View {
                         .stroke(Color.white.opacity(0.3), lineWidth: 2)
                 )
             
-            cardImage(named: "back")
+            Image("CardDeck/back")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
                 .padding(8)
         }

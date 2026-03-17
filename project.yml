@@ -21,7 +21,7 @@ targets:
     sources:
       - path: Sources
         type: group
-      - path: Resources/Assets.xcassets
+      - path: Resources/Assets.xcassets/CardDeck.imageset
         type: file
         buildPhase: resources
     settings:
