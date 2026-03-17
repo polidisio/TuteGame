@@ -21,10 +21,7 @@ targets:
     sources:
       - path: Sources
         type: group
-      - path: Resources/Assets.xcassets
-        type: file
-        buildPhase: resources
-      - path: Resources/Images
+      - path: Resources/CardImages
         type: folder
         buildPhase: resources
     settings:
