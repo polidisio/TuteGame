@@ -83,7 +83,7 @@ struct CardView: View {
             
             cardImage(named: imageNumber)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
                 .padding(4)
             
